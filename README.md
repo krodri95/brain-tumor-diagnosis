@@ -1,4 +1,4 @@
-# Brain-Tumor-Diagnosis
+# brain-tumor-diagnosis
 
 This is the code base for my master's dissertation on 'Explainable Deep Learning for Brain Tumor Diagnosis' - Utiliziing xAI techniques for model explainability and a novel weakly supervised semantic segmentation approach.
 
