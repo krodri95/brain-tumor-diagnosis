@@ -13,7 +13,7 @@ The [Brain tumor MRI dataset](https://www.kaggle.com/dsv/2645886) available was 
 An explainable, lightweight convolutional neural network inspired by feature pyramid networks and attention mechanisms was developed to address the issue of explainability in brain tumor classification. Class activation mapping (CAM) is utilized to provide visual explanations for the model’s predictions. Additionally, a novel weakly supervised semantic segmentation (WSSS) method that combines class activation maps with graph-based segmentation is proposed to generate tumor masks.
 
 ## Training and Evaluation
-This project is implemented in PyTorch. Use the notebook [BT_diagnosis_5CV.ipynb](https://github.com/krodri95/brain-tumor-diagnosis/Colab Notebooks) to train and evaluate the base model and the attention integrated models. 
+This project is implemented in PyTorch. Use the notebook [BT_diagnosis_5CV.ipynb](Colab%20Notebooks) to train and evaluate the base model and the attention integrated models. 
 
 ## Usage
 
