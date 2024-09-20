@@ -6,7 +6,7 @@ The [Brain tumor MRI dataset](https://www.kaggle.com/dsv/2645886) available was 
 
 ## Network Architecture
 <div style="text-align: center;">
-    <img src="assets/net.png" width="800">
+    <img src="assets/net.png" width="700">
 </div>
 
 ## Methodology
@@ -20,7 +20,7 @@ This project is implemented in PyTorch. Use the notebook [BT_diagnosis_5CV.ipynb
 Follow these steps to run the models and view the class activation maps.
 
 ### Clone and install the dependencies
-```
+```bash
 git clone https://github.com/krodri95/brain-tumor-diagnosis.git
 cd brain-tumor-diagnosis
 pip install -r requirements.txt
@@ -28,15 +28,14 @@ pip install -r requirements.txt
 
 ### Inference
 
-'predict.py' runs inference on a single image and the results are saved to 'exp/'. Select the model and the CAM technique.
+`predict.py` runs inference on a single image and the results are saved to `exp/`. Select the model and the CAM technique.
 
-`python3 predict.py --imgp assets/meningioma.jpg --model-type  cbam --cam-type ScoreCAM'
-
-
-
+```bash 
+python predict.py --imgp assets/meningioma.jpg --model-type cbam --cam-type ScoreCAM
+```
 
 
 ## Weakly Supervised Semantic Segmentation
 <div style="text-align: center;">
-    <img src="assets/WSSS.png" width="800">
+    <img src="assets/WSSS.png" width="700">
 </div>
