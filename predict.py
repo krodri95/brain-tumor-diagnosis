@@ -1,6 +1,5 @@
 import torch
 import numpy as np
-import glob
 import cv2
 import argparse
 from pathlib import Path
@@ -54,7 +53,7 @@ def parse_opt():
     parser = argparse.ArgumentParser()
     parser.add_argument('--imgp', type=str, default='', help='input image path')
     parser.add_argument('--model-type', default='cbam', help='base, se or cbam')
-    parser.add_argument('--cam_type', default='ScoreCAM', help='GradCAM, HiResCAM, ScoreCAM, GradCAMPlusPlus, AblationCAM, XGradCAM, EigenCAM, FullGrad or LayerCAM')
+    parser.add_argument('--cam-type', default='ScoreCAM', help='GradCAM, HiResCAM, ScoreCAM, GradCAMPlusPlus, AblationCAM, XGradCAM, EigenCAM, FullGrad or LayerCAM')
  
     opt = parser.parse_args()
     assert Path(opt.imgp).is_file(), f'Invalid file: {opt.imgp}'

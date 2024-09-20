@@ -1,0 +1,9 @@
+# pip install -r requirements.txt
+
+grad-cam>=1.5.2
+matplotlib>=3.9.2
+numpy>=1.25.0
+opencv-python>=4.8.0.74
+skimage>=0.0
+torch>=2.3.1
+torchvision>=0.18.1
