@@ -32,6 +32,7 @@ def main(imgp='./assets/', model_type='cbam', cam_type=None):
     cam = GradCam(model, target_layers, net_size, cam_type)
     #glioma, meningioma, pituitary
     heatmap = cam.getMap(imgp)
+    rmask, _, _ = graphSegment(imgp, heatmap)
 
     img = cv2.imread(imgp, cv2.IMREAD_COLOR)
     heatmap = cv2.resize(heatmap, (img.shape[:2][::-1]))
@@ -45,8 +46,8 @@ def main(imgp='./assets/', model_type='cbam', cam_type=None):
     d = Path('./exp')
     d.mkdir(parents=True, exist_ok=True)
 
-    cv2.imwrite('./exp/'+model_type+'_'+imgp.split('/')[-1], np.uint8(255 * expl))
-    print('\nResults saved to ./exp')
+    cv2.imwrite('./exp/'+model_type+'_'+cam_type+'_'+imgp.split('/')[-1], np.uint8(255 * expl))
+    cv2.imwrite('./exp/'+model_type+'_'+cam_type+'_mask_'+imgp.split('/')[-1], rmask)
 
 
 def parse_opt():

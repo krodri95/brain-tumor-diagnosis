@@ -142,12 +142,21 @@ class GradCam():
         return (xmin, ymin, xmax, ymax)
     
 
-def graphSegment(image_path, mask):
+def graphSegment(image_path, heatmap):
     img = Image.open(image_path)
     image = np.array(img)
     segmented_image = felzenszwalb(image, scale=400, sigma=0.8, min_size=20).astype(np.uint8)
-
     h, w = segmented_image.shape
+
+    # Convert heatmap -> BGR to HSV
+    hsv = cv2.cvtColor(heatmap, cv2.COLOR_BGR2HSV)
+    # Define range of red color in HSV
+    lower_red = np.array([0, 50, 50])
+    upper_red = np.array([10, 255, 255])
+    # Threshold the HSV image to get only red colors
+    mask = cv2.inRange(hsv, lower_red, upper_red)
+    mask = cv2.resize(mask, (w,h))
+
     # Calculate the histogram of pixel values
     segImp = cv2.bitwise_and(mask, segmented_image)
     hist = cv2.calcHist([segImp], [0], None, [256], [0, 256])
@@ -174,6 +183,25 @@ def graphSegment(image_path, mask):
     
 
     return render, tmask, colored_lmask
+
+
+def colorSam(image_path):
+    img = Image.open(image_path)
+    image = np.array(img)
+    values, counts = np.unique(image.reshape(-1, 1), axis=0, return_counts=True)
+    h, w = image.shape
+
+    #colormap for the segmentated classes
+    # Generate a color map using matplotlib
+    cmap = plt.get_cmap('tab20c')
+    colors = cmap(np.linspace(0, 1, 20))[:, :3] * 255  # Scale to [0, 255]
+    colored_lmask = np.zeros((h, w, 3), dtype=np.uint8)
+    for class_index in range(len(counts)):
+        color = np.random.random((1, 3)).tolist()[0]
+        color = [x * 255 for x in color]
+        colored_lmask[image == class_index] = color#colors[class_index%20].astype(np.uint8)
+
+    return colored_lmask
 
 
 def region_growing(image_path, tbox):
