@@ -40,3 +40,7 @@ python predict.py --imgp assets/meningioma.jpg --model-type cbam --cam-type Scor
 
 ## Notes
 Among the CAM techniques, Score-CAM provided better visual insights and highly localized class activation maps for meningiomas. The maps for pituitary tumors exhibited weak activations, while the maps for gliomas were inaccurate. The attention mechanisms enhanced the clarity of the visual explanations without significantly reducing the evaluation scores. While both Squeeze-and-Excitation (SE) and Convolutional Block Attention Module (CBAM) improved tumor localization in the class activation maps, the class discriminative maps from the CBAM integrated model were more precise and contained less noise.
+
+## License
+
+This project is licensed under the MIT License.
